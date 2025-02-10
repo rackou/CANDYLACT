@@ -33,6 +33,6 @@ function sendOrder() {
     message += `\nTotal: $${total}`;
     message += "\nPor favor, indícame el punto de entrega y el método de pago.";
 
-    const whatsappUrl = `https://wa.me/TU_NUMERO?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/+573203002596?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 }
