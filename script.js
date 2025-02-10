@@ -1,38 +1,28 @@
-let cart = [];
-let total = 0;
+document.getElementById("order-form").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-function addToCart(name, price) {
-    cart.push({ name, price });
-    total += price;
-    updateCartDisplay();
-    alert(`${name} agregado al carrito.`);
-}
+    // Capturar datos del formulario
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value || "No proporcionada";
+    const paymentMethod = document.getElementById("payment-method").value;
 
-function updateCartDisplay() {
-    const cartItemsElement = document.getElementById("cart-items");
-    const cartTotalElement = document.getElementById("cart-total");
-
-    cartItemsElement.innerHTML = "";
-    cart.forEach(item => {
-        cartItemsElement.innerHTML += `<p>${item.name} - $${item.price}</p>`;
-    });
-
-    cartTotalElement.textContent = total;
-}
-
-function sendOrder() {
-    if (cart.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-    }
-
-    let message = "Hola, quiero hacer un pedido:\n";
+    // Construir el mensaje de WhatsApp
+    let message = `Nuevo pedido de ${name}:\n`;
+    message += `Teléfono: ${phone}\n`;
+    message += `Dirección: ${address}\n`;
+    message += `Método de pago: ${paymentMethod}\n\n`;
+    message += "Productos:\n";
     cart.forEach(item => {
         message += `- ${item.name} ($${item.price})\n`;
     });
     message += `\nTotal: $${total}`;
-    message += "\nPor favor, indícame el punto de entrega y el método de pago.";
 
-    const whatsappUrl = `https://wa.me/+573203002596?text=${encodeURIComponent(message)}`;
+    // Redirigir a WhatsApp
+    const whatsappUrl = `https://wa.me/TU_NUMERO?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
-}
+
+    // Mostrar mensaje de confirmación
+    document.getElementById("confirmation-message").textContent =
+        "¡Tu pedido ha sido enviado! Pronto nos comunicaremos contigo.";
+});
