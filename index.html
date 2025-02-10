@@ -1,23 +1,67 @@
-<section id="checkout">
-    <h2>Finalizar Pedido</h2>
-    <form id="order-form">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yogurt Griego</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Yogurt Griego Fresco 🥛</h1>
+        <p>El mejor yogurt griego hecho con ingredientes naturales y frescos.</p>
+    </header>
 
-        <label for="phone">Número de contacto:</label>
-        <input type="tel" id="phone" name="phone" required>
+    <section id="products">
+        <h2>Nuestros Productos</h2>
+        <div class="product">
+            <h3>Yogurt Griego Natural</h3>
+            <p>Precio: $5,000</p>
+            <button onclick="addToCart('Yogurt Griego Natural', 5000)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <h3>Yogurt Griego con Miel</h3>
+            <p>Precio: $6,000</p>
+            <button onclick="addToCart('Yogurt Griego con Miel', 6000)">Agregar al carrito</button>
+        </div>
+    </section>
 
-        <label for="address">Dirección (opcional):</label>
-        <input type="text" id="address" name="address">
+    <section id="cart">
+        <h2>Tu Carrito</h2>
+        <div id="cart-items"></div>
+        <p>Total: $<span id="cart-total">0</span></p>
+    </section>
 
-        <label for="payment-method">Método de pago:</label>
-        <select id="payment-method" name="payment-method" required>
-            <option value="efectivo">Efectivo</option>
-            <option value="transferencia">Transferencia bancaria</option>
-            <option value="daviplata">Daviplata</option>
-        </select>
+    <section id="checkout">
+        <h2>Finalizar Pedido</h2>
+        <form id="order-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
 
-        <button type="submit">Enviar Pedido</button>
-    </form>
-    <p id="confirmation-message"></p>
-</section>
+            <label for="phone">Número de contacto:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Dirección (opcional):</label>
+            <input type="text" id="address" name="address">
+
+            <label for="payment-method">Método de pago:</label>
+            <select id="payment-method" name="payment-method" required>
+                <option value="efectivo">Efectivo</option>
+                <option value="transferencia">Transferencia bancaria</option>
+                <option value="daviplata">Daviplata</option>
+            </select>
+
+            <button type="submit">Enviar Pedido</button>
+        </form>
+        <p id="confirmation-message"></p>
+    </section>
+
+    <section id="payment-options">
+        <h2>Opciones de Pago</h2>
+        <p>Puedes pagar usando el siguiente QR de Daviplata:</p>
+        <img src="ruta/al/qr-daviplata.png" alt="QR de Daviplata" width="200">
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
