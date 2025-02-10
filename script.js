@@ -1,3 +1,28 @@
+let cart = [];
+let total = 0;
+
+// Función para agregar productos al carrito
+function addToCart(name, price) {
+    cart.push({ name, price });
+    total += price;
+    updateCartDisplay();
+    alert(`${name} agregado al carrito.`);
+}
+
+// Función para actualizar la visualización del carrito
+function updateCartDisplay() {
+    const cartItemsElement = document.getElementById("cart-items");
+    const cartTotalElement = document.getElementById("cart-total");
+
+    cartItemsElement.innerHTML = "";
+    cart.forEach(item => {
+        cartItemsElement.innerHTML += `<p>${item.name} - $${item.price}</p>`;
+    });
+
+    cartTotalElement.textContent = total;
+}
+
+// Manejador de envío del formulario
 document.getElementById("order-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -19,7 +44,7 @@ document.getElementById("order-form").addEventListener("submit", function (event
     message += `\nTotal: $${total}`;
 
     // Redirigir a WhatsApp
-    const whatsappUrl = `https://wa.me/+573203002596?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/TU_NUMERO?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
     // Mostrar mensaje de confirmación
