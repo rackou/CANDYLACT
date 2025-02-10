@@ -19,7 +19,7 @@ document.getElementById("order-form").addEventListener("submit", function (event
     message += `\nTotal: $${total}`;
 
     // Redirigir a WhatsApp
-    const whatsappUrl = `https://wa.me/TU_NUMERO?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/+573203002596?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
     // Mostrar mensaje de confirmación
